@@ -38,6 +38,7 @@ namespace Staff
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgvOrgs = new System.Windows.Forms.DataGridView();
+            this.dgvEmployees = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.taxNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,7 +46,7 @@ namespace Staff
             this.realAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.infoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orgBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dgvEmployees = new System.Windows.Forms.DataGridView();
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orgIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,15 +56,14 @@ namespace Staff
             this.passSerialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.infoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrgs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orgBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orgBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -166,53 +166,6 @@ namespace Staff
             this.dgvOrgs.TabIndex = 0;
             this.dgvOrgs.SelectionChanged += new System.EventHandler(this.dgvOrgs_SelectionChanged);
             // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // taxNumDataGridViewTextBoxColumn
-            // 
-            this.taxNumDataGridViewTextBoxColumn.DataPropertyName = "TaxNum";
-            this.taxNumDataGridViewTextBoxColumn.HeaderText = "TaxNum";
-            this.taxNumDataGridViewTextBoxColumn.Name = "taxNumDataGridViewTextBoxColumn";
-            this.taxNumDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // legalAddressDataGridViewTextBoxColumn
-            // 
-            this.legalAddressDataGridViewTextBoxColumn.DataPropertyName = "LegalAddress";
-            this.legalAddressDataGridViewTextBoxColumn.HeaderText = "LegalAddress";
-            this.legalAddressDataGridViewTextBoxColumn.Name = "legalAddressDataGridViewTextBoxColumn";
-            this.legalAddressDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // realAddressDataGridViewTextBoxColumn
-            // 
-            this.realAddressDataGridViewTextBoxColumn.DataPropertyName = "RealAddress";
-            this.realAddressDataGridViewTextBoxColumn.HeaderText = "RealAddress";
-            this.realAddressDataGridViewTextBoxColumn.Name = "realAddressDataGridViewTextBoxColumn";
-            this.realAddressDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // infoDataGridViewTextBoxColumn
-            // 
-            this.infoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.infoDataGridViewTextBoxColumn.DataPropertyName = "Info";
-            this.infoDataGridViewTextBoxColumn.HeaderText = "Info";
-            this.infoDataGridViewTextBoxColumn.Name = "infoDataGridViewTextBoxColumn";
-            this.infoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // orgBindingSource
-            // 
-            this.orgBindingSource.DataSource = typeof(Staff.Base.Org);
-            // 
             // dgvEmployees
             // 
             this.dgvEmployees.AllowUserToAddRows = false;
@@ -239,10 +192,63 @@ namespace Staff
             this.dgvEmployees.Size = new System.Drawing.Size(984, 301);
             this.dgvEmployees.TabIndex = 0;
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "№";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Название";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // taxNumDataGridViewTextBoxColumn
+            // 
+            this.taxNumDataGridViewTextBoxColumn.DataPropertyName = "TaxNum";
+            this.taxNumDataGridViewTextBoxColumn.HeaderText = "ИНН";
+            this.taxNumDataGridViewTextBoxColumn.Name = "taxNumDataGridViewTextBoxColumn";
+            this.taxNumDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // legalAddressDataGridViewTextBoxColumn
+            // 
+            this.legalAddressDataGridViewTextBoxColumn.DataPropertyName = "LegalAddress";
+            this.legalAddressDataGridViewTextBoxColumn.HeaderText = "Юридический адрес";
+            this.legalAddressDataGridViewTextBoxColumn.Name = "legalAddressDataGridViewTextBoxColumn";
+            this.legalAddressDataGridViewTextBoxColumn.ReadOnly = true;
+            this.legalAddressDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // realAddressDataGridViewTextBoxColumn
+            // 
+            this.realAddressDataGridViewTextBoxColumn.DataPropertyName = "RealAddress";
+            this.realAddressDataGridViewTextBoxColumn.HeaderText = "Физический адрес";
+            this.realAddressDataGridViewTextBoxColumn.Name = "realAddressDataGridViewTextBoxColumn";
+            this.realAddressDataGridViewTextBoxColumn.ReadOnly = true;
+            this.realAddressDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // infoDataGridViewTextBoxColumn
+            // 
+            this.infoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.infoDataGridViewTextBoxColumn.DataPropertyName = "Info";
+            this.infoDataGridViewTextBoxColumn.HeaderText = "Примечание";
+            this.infoDataGridViewTextBoxColumn.Name = "infoDataGridViewTextBoxColumn";
+            this.infoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // orgBindingSource
+            // 
+            this.orgBindingSource.DataSource = typeof(Staff.Base.Org);
+            // 
+            // employeeBindingSource
+            // 
+            this.employeeBindingSource.DataSource = typeof(Staff.Base.Employee);
+            // 
             // idDataGridViewTextBoxColumn1
             // 
             this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn1.HeaderText = "№";
             this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
             this.idDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
@@ -252,60 +258,60 @@ namespace Staff
             this.orgIdDataGridViewTextBoxColumn.HeaderText = "OrgId";
             this.orgIdDataGridViewTextBoxColumn.Name = "orgIdDataGridViewTextBoxColumn";
             this.orgIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.orgIdDataGridViewTextBoxColumn.Visible = false;
             // 
             // lastNameDataGridViewTextBoxColumn
             // 
             this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "Фамилия";
             this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
             this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // firstNameDataGridViewTextBoxColumn
             // 
             this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "Имя";
             this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
             this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // middleNameDataGridViewTextBoxColumn
             // 
             this.middleNameDataGridViewTextBoxColumn.DataPropertyName = "MiddleName";
-            this.middleNameDataGridViewTextBoxColumn.HeaderText = "MiddleName";
+            this.middleNameDataGridViewTextBoxColumn.HeaderText = "Отчество";
             this.middleNameDataGridViewTextBoxColumn.Name = "middleNameDataGridViewTextBoxColumn";
             this.middleNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // birthDateDataGridViewTextBoxColumn
             // 
             this.birthDateDataGridViewTextBoxColumn.DataPropertyName = "BirthDate";
-            this.birthDateDataGridViewTextBoxColumn.HeaderText = "BirthDate";
+            this.birthDateDataGridViewTextBoxColumn.HeaderText = "Дата рождения";
             this.birthDateDataGridViewTextBoxColumn.Name = "birthDateDataGridViewTextBoxColumn";
             this.birthDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.birthDateDataGridViewTextBoxColumn.Width = 120;
             // 
             // passSerialDataGridViewTextBoxColumn
             // 
             this.passSerialDataGridViewTextBoxColumn.DataPropertyName = "PassSerial";
-            this.passSerialDataGridViewTextBoxColumn.HeaderText = "PassSerial";
+            this.passSerialDataGridViewTextBoxColumn.HeaderText = "Серия паспорта";
             this.passSerialDataGridViewTextBoxColumn.Name = "passSerialDataGridViewTextBoxColumn";
             this.passSerialDataGridViewTextBoxColumn.ReadOnly = true;
+            this.passSerialDataGridViewTextBoxColumn.Width = 120;
             // 
             // passNumDataGridViewTextBoxColumn
             // 
             this.passNumDataGridViewTextBoxColumn.DataPropertyName = "PassNum";
-            this.passNumDataGridViewTextBoxColumn.HeaderText = "PassNum";
+            this.passNumDataGridViewTextBoxColumn.HeaderText = "Номер паспорта";
             this.passNumDataGridViewTextBoxColumn.Name = "passNumDataGridViewTextBoxColumn";
             this.passNumDataGridViewTextBoxColumn.ReadOnly = true;
+            this.passNumDataGridViewTextBoxColumn.Width = 120;
             // 
             // infoDataGridViewTextBoxColumn1
             // 
             this.infoDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.infoDataGridViewTextBoxColumn1.DataPropertyName = "Info";
-            this.infoDataGridViewTextBoxColumn1.HeaderText = "Info";
+            this.infoDataGridViewTextBoxColumn1.HeaderText = "Примечание";
             this.infoDataGridViewTextBoxColumn1.Name = "infoDataGridViewTextBoxColumn1";
             this.infoDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // employeeBindingSource
-            // 
-            this.employeeBindingSource.DataSource = typeof(Staff.Base.Employee);
             // 
             // MainForm
             // 
@@ -325,8 +331,8 @@ namespace Staff
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrgs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orgBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orgBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             this.ResumeLayout(false);
 

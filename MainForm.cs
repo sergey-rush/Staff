@@ -18,6 +18,7 @@ namespace Staff
     public partial class MainForm : Form
     {
         private List<Org> orgs;
+        private Org selectedOrg;
         private List<Employee> employees;
         public MainForm()
         {
@@ -32,6 +33,9 @@ namespace Staff
 
         private void btnImport_Click(object sender, EventArgs e)
         {
+            if(selectedOrg is null)
+                return;
+
             OpenFileDialog ofd = new OpenFileDialog
             {
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
@@ -53,9 +57,11 @@ namespace Staff
 
                     foreach (Employee employee in records)
                     {
+                        employee.OrgId = selectedOrg.Id;
                         DataProvider.InsertEmployee(employee);
                     }
 
+                    UpdateEmployees();
                     var count = records.Count();
                     string msg = $"{count} строк успешно импортировано";
                     MessageBox.Show(msg, "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -82,11 +88,16 @@ namespace Staff
 
         private void dgvOrgs_SelectionChanged(object sender, EventArgs e)
         {
-            Org org = (Org) dgvOrgs.CurrentRow?.DataBoundItem;
+            selectedOrg = (Org) dgvOrgs.CurrentRow?.DataBoundItem;
 
-            if (org != null)
+            UpdateEmployees();
+        }
+
+        private void UpdateEmployees()
+        {
+            if (selectedOrg != null)
             {
-                employees = DataProvider.GetEmployeesByOrgId(org.Id);
+                employees = DataProvider.GetEmployeesByOrgId(selectedOrg.Id);
 
                 if (employees != null && employees.Count > 0)
                 {
